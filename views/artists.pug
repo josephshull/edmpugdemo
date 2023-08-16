@@ -1,0 +1,7 @@
+extends layout 
+
+block maincontent 
+    h1= title
+    ul
+        each artist in artists
+            li= artist.name
