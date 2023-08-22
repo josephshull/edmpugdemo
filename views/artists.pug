@@ -4,4 +4,5 @@ block maincontent
     h1= title
     ul
         each artist in artists
-            li= artist.name
+            li= artist.name == "Steve Aoki" ? "Avici" : artist.name
+    p featured artist of the week is #{artists[1].name}

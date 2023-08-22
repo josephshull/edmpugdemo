@@ -1,8 +1,10 @@
 doctype html
 html
   head
+    block pagemetadata
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='/javascripts/edm.js', defer)
   body
     header 
       nav
@@ -13,6 +15,10 @@ html
             a(
               href='/artists'
               ) Artists
+      h1#pageheader Welcome To The Employee Data Management Tool
     main 
       block maincontent
+      block leftmaincontent
     footer
+      p Copy Joseph Shull 
+      block footercontent

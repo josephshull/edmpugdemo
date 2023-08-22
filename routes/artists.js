@@ -10,6 +10,8 @@ const pageData = {
     ]
 }
 
+pageData.artists[1].name = "Steve Aoki"
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('artists', pageData);
