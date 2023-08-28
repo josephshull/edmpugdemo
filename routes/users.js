@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res) {
   try {
     let user = req.body
-    userModel.createUser()
+    userModel.CreateUser(user.username, user.password, user.email)
     res.sendStatus(200)
   }
   catch (err) {
