@@ -3,19 +3,28 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session')
 
 var indexRouter = require('./routes/index');
 var artistsRouter = require('./routes/artists')
 var usersRouter = require('./routes/users');
 var metricsRouter = require('./routes/metrics')
+var logoutRouter = require('./routes/logout')
 
 var app = express();
+
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret: 'chaosRecipe',
+  cookie: { secure: false },
+  resave: false,
+  saveUninitialized: true,
+}))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,6 +34,8 @@ app.use('/', indexRouter);
 app.use('/artists', artistsRouter)
 app.use('/users', usersRouter);
 app.use('/artistmetrics', metricsRouter)
+app.use('/logout', logoutRouter)
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -14,6 +14,7 @@ pageData.artists[1].name = "Steve Aoki"
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  pageData.user = req.session.user
   res.render('artists', pageData);
 });
 
